@@ -64,12 +64,38 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SizedBox(height: 8),
-                  Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 206, 49, 38),
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    ),
+                  Stack(
+                    children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 206, 49, 38),
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                        ),
+                      ),
+                      Positioned(
+                        left: 16,
+                        top: 16,
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/fruit.jpg',
+                              width: 20,
+                              height: 20,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "Grocery Shopping App",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
