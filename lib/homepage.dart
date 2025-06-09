@@ -72,17 +72,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(height: 18),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Find By Category",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text("See All", style: TextStyle(color: Colors.black)),
-                    ],
-                  ),
-                  SizedBox(height: 8),
                   Stack(
                     children: [
                       Container(
@@ -93,25 +82,59 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Positioned(
-                        left: 16,
-                        top: 16,
+                        left: 20,
+                        top: 25,
                         child: Row(
                           children: [
                             Image.asset(
                               'assets/images/fruit.jpg',
-                              width: 20,
-                              height: 20,
+                              width: 150,
+                              height: 150,
                             ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Grocery Shopping App",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            SizedBox(width: 20),
+
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Grocery Shopping App",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 12),
+                                Text(
+                                  "Get 20% off",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Find By Category",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "See All",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
