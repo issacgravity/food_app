@@ -13,6 +13,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
 
+  final List<Widget> pages = const [
+    HomePage(),
+    CartPage(),
+    FavoritePage(),
+    ProfilePage(),
+  ];
+
+  void onTabTapped(int index) {
+    if (index != selectedIndex) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => pages[index]),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -108,25 +124,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: selectedIndex,
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-
-            // List of destination pages
-            final List<Widget> pages = [
-              const HomePage(),
-              const CartPage(),
-              const FavoritePage(),
-              const ProfilePage(),
-            ];
-
-            // Push new screen using Navigator
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => pages[index]),
-            );
-          },
+          onTap: onTabTapped,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: const Color.fromARGB(255, 206, 49, 38),
           unselectedItemColor: Colors.black,
