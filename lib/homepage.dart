@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import "package:food_app/cartpage.dart";
+import "package:food_app/favoritepage.dart";
+import "package:food_app/profilepage.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -109,6 +112,20 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               selectedIndex = index;
             });
+
+            // List of destination pages
+            final List<Widget> pages = [
+              const HomePage(),
+              const CartPage(),
+              const FavoritePage(),
+              const ProfilePage(),
+            ];
+
+            // Push new screen using Navigator
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => pages[index]),
+            );
           },
           type: BottomNavigationBarType.fixed,
           selectedItemColor: const Color.fromARGB(255, 206, 49, 38),
