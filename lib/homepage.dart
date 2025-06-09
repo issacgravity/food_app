@@ -1,7 +1,7 @@
-import "package:flutter/material.dart";
-import "package:food_app/cartpage.dart";
-import "package:food_app/favoritepage.dart";
-import "package:food_app/profilepage.dart";
+import 'package:flutter/material.dart';
+import 'package:food_app/cartpage.dart';
+import 'package:food_app/favoritepage.dart';
+import 'package:food_app/profilepage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +12,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+  int selectedCategoryIndex = 0;
+
+  final List<String> categories = [
+    "Fast Food",
+    "Fruits",
+    "Drinks",
+    "Vegetables",
+  ];
 
   final List<Widget> pages = const [
     HomePage(),
@@ -32,16 +40,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
+
         appBar: AppBar(
           backgroundColor: Colors.white,
+          elevation: 0,
           title: Center(
             child: Text("Home", style: TextStyle(color: Colors.black)),
           ),
           leading: Icon(Icons.menu, color: Colors.black),
           actions: [Icon(Icons.notification_add, color: Colors.black)],
         ),
+
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Container(
@@ -49,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 16),
                   TextField(
@@ -92,7 +104,6 @@ class _HomePageState extends State<HomePage> {
                               height: 150,
                             ),
                             SizedBox(width: 20),
-
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -128,6 +139,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
                       ),
                       Text(
@@ -139,11 +151,40 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+
+                  SizedBox(height: 8),
+
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(categories.length, (index) {
+                        final isSelected = selectedCategoryIndex == index;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 12.0),
+                          child: ChoiceChip(
+                            label: Text(categories[index]),
+                            selected: isSelected,
+                            selectedColor: Colors.red,
+                            backgroundColor: Colors.grey.shade200,
+                            labelStyle: TextStyle(
+                              color: isSelected ? Colors.white : Colors.black,
+                            ),
+                            onSelected: (_) {
+                              setState(() {
+                                selectedCategoryIndex = index;
+                              });
+                            },
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ),
+
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: selectedIndex,
