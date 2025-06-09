@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
 
-                  SizedBox(height: 8),
+                  SizedBox(height: 15),
 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -161,23 +161,69 @@ class _HomePageState extends State<HomePage> {
                         final isSelected = selectedCategoryIndex == index;
                         return Padding(
                           padding: const EdgeInsets.only(right: 12.0),
-                          child: ChoiceChip(
-                            label: Text(categories[index]),
-                            selected: isSelected,
-                            selectedColor: Colors.red,
-                            backgroundColor: Colors.grey.shade200,
-                            labelStyle: TextStyle(
-                              color: isSelected ? Colors.white : Colors.black,
-                            ),
-                            onSelected: (_) {
+                          child: GestureDetector(
+                            onTap: () {
                               setState(() {
                                 selectedCategoryIndex = index;
                               });
                             },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                color:
+                                    isSelected
+                                        ? Colors.red
+                                        : Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow:
+                                    isSelected
+                                        ? [
+                                          BoxShadow(
+                                            color: Colors.red,
+                                            blurRadius: 5,
+                                            offset: Offset(0, 3),
+                                          ),
+                                        ]
+                                        : [],
+                              ),
+                              child: Text(
+                                categories[index],
+                                style: TextStyle(
+                                  color:
+                                      isSelected ? Colors.white : Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         );
                       }),
                     ),
+                  ),
+
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Fast Food",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "See All",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
