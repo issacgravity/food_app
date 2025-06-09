@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/cartpage.dart';
 import 'package:food_app/favoritepage.dart';
+import 'package:food_app/productpage.dart';
 import 'package:food_app/profilepage.dart';
 
 class HomePage extends StatefulWidget {
@@ -72,6 +73,7 @@ class _HomePageState extends State<HomePage> {
     CartPage(),
     FavoritePage(),
     ProfilePage(),
+    ProductPage(),
   ];
 
   void onTabTapped(int index) {
@@ -274,6 +276,12 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           selectedFood = index;
                         });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductPage(),
+                          ),
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.42,
