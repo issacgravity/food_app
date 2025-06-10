@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 TextField(
                   decoration: InputDecoration(
                     hintText: "Search",
@@ -115,24 +115,24 @@ class _HomePageState extends State<HomePage> {
                     fillColor: Colors.grey[50],
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(24),
-                      borderSide: const BorderSide(color: Colors.grey),
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(24),
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.amberAccent,
                         width: 2,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 18),
+                SizedBox(height: 18),
                 Stack(
                   children: [
                     Container(
                       height: 200,
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 206, 49, 38),
+                        color: Color.fromARGB(255, 206, 49, 38),
                         borderRadius: const BorderRadius.all(
                           Radius.circular(12.0),
                         ),
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                     }),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -263,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15),
                 Center(
                   child: Wrap(
                     spacing: 12,
