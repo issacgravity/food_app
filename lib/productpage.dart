@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/cartpage.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -166,25 +167,160 @@ class _ProductPageState extends State<ProductPage> {
                     Text(
                       textAlign: TextAlign.justify,
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                     ),
                   ],
                 ),
 
                 SizedBox(height: 20),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      "Fast Food",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      "See All",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15),
+
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    children: List.generate(food.length, (index) {
+                      final item = food[index];
+                      final isSelected = selectedFood == index;
+
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {});
+                          },
+                          child: Container(
+                            width:
+                                MediaQuery.of(context).size.width *
+                                0.6, // Adjust width as needed
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color:
+                                  isSelected
+                                      ? Colors.red.shade50
+                                      : Colors.grey.shade100,
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                color:
+                                    isSelected
+                                        ? Colors.red
+                                        : Colors.transparent,
+                                width: 2,
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: Image.asset(
+                                    item["image"],
+                                    height: 150,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      item["title"],
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                          size: 16,
+                                        ),
+                                        Text(
+                                          item["rating"].toString(),
+                                          style: const TextStyle(fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 6),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "\$${item["price"].toString()}",
+                                      style: const TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(8),
+                                        ),
+                                      ),
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+
+                SizedBox(height: 20),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {});
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartPage()),
+                    );
+                  },
                   child: Container(
-                    height: 50,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Center(
                       child: Text(
                         'Check Out',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
