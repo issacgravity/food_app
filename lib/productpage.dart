@@ -82,14 +82,14 @@ class _ProductPageState extends State<ProductPage> {
             Stack(
               children: [
                 Container(
-                  height: 200,
+                  height: 250,
                   decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 Positioned(
-                  top: 25,
+                  top: 50,
                   left: 125,
                   child: Image.asset(
                     'assets/images/salad.jpg',
@@ -302,7 +302,7 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 40),
                 InkWell(
                   onTap: () {
                     setState(() {});
