@@ -50,6 +50,24 @@ class _CartPageState extends State<CartPage> {
       "price": 3.49,
       "description": "Fresh vegetable salad",
     },
+    {
+      "image": "assets/images/burger.jpg",
+      "title": "Burger",
+      "price": 4.99,
+      "description": "Delicious beef burger",
+    },
+    {
+      "image": "assets/images/pizza.jpg",
+      "title": "Pizza",
+      "price": 6.99,
+      "description": "Cheesy pepperoni pizza",
+    },
+    {
+      "image": "assets/images/salad.jpg",
+      "title": "Salad",
+      "price": 3.49,
+      "description": "Fresh vegetable salad",
+    },
   ];
 
   List<int> quantities = [];
