@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
 
   void onTabTapped(int index) {
     if (index != selectedIndex) {
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => pages[index]),
       );
